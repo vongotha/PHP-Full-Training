@@ -1,7 +1,7 @@
 <?php
 
-$heading = "About Us";
+//$uri = $_SERVER['REQUEST_URI'];
 
-$uri = $_SERVER['REQUEST_URI'];
-
-require 'views/about.view.php';
+views("about.view.php", [
+    "heading" => "About Us",
+]);

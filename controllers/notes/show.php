@@ -1,13 +1,10 @@
 <?php
 
 
-
-
 // connect to our MySQL database
-$config = require ('config.php');
+$config = require base_path('config.php');
 $db = new Database($config['database'], 'root', '');
 
-$heading = "Note";
 
 $note = $db->query("select * from notes where  id = :id;", 
 ['id' => $_GET['id']])->findOrFail();
@@ -20,7 +17,10 @@ $currentUserId = 3;
 
 authorize($note['user_id'] === $currentUserId);
 
-
+ 
 //dd($note);
 
-require 'views/notes/show.view.php';
+views("notes/show.view.php", [
+    'heading' => "Note",
+    'note' => $note
+]);

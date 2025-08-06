@@ -1,12 +1,12 @@
 <?php
 
-require 'validator.php';
+require base_path('core/validator.php');
 
 // connect to our MySQL database
-$config = require ('config.php');
+$config = base_path('config.php');
 $db = new Database($config['database'], 'root', '');
 
-
+// Email validation example
 /*
 $email_test = "ffffah";
 if (!Validator::email($email_test)) {
@@ -17,10 +17,10 @@ if (!Validator::email($email_test)) {
 
 */
 
-$heading = "Create Note";
 
-   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $errors = [];
+$errors = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (! Validator::string($_POST['body'], 1, 500)) {
             $errors['body'] = "A body of no more than 500 characters is required.";
         }
@@ -35,4 +35,7 @@ $heading = "Create Note";
 
     }
 
-require 'views/notes/create.view.php';
+views("notes/create.view.php", [
+    'heading' => "Create Note",
+    'errors' => $errors
+]);
