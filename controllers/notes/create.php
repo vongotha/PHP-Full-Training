@@ -6,12 +6,16 @@ require 'validator.php';
 $config = require ('config.php');
 $db = new Database($config['database'], 'root', '');
 
+
+/*
 $email_test = "ffffah";
 if (!Validator::email($email_test)) {
     dd("Invalid email format.");
 } else {
     dd(Validator::email($email_test), "Email format is valid.");
 }
+
+*/
 
 $heading = "Create Note";
 
@@ -31,4 +35,4 @@ $heading = "Create Note";
 
     }
 
-require 'views/note-create.view.php';
+require 'views/notes/create.view.php';
