@@ -17,7 +17,7 @@ if (!Validator::email($email_test)) {
 
 */
 
-
+$heading = "Create Note";
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -36,6 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 views("notes/create.view.php", [
-    'heading' => "Create Note",
+    'heading' => $heading,
     'errors' => $errors
 ]);
