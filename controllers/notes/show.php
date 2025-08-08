@@ -1,26 +1,40 @@
 <?php
 
-use Core\Database;
-// connect to our MySQL database
-$config = require base_path('config.php');
-$db = new Database($config['database'], 'root', '');
+    use Core\Database;
+    // connect to our MySQL database
+    $config = require base_path('config.php');
+    $db = new Database($config['database'], 'root', '');
 
 
-$note = $db->query("select * from notes where  id = :id;", 
-['id' => $_GET['id']])->findOrFail();
+    $note = $db->query("select * from notes where  id = :id;", 
+    ['id' => $_GET['id']])->findOrFail();
 
-if (!$note) {
-    abort();
-}
 
-$currentUserId = 3;
+    $currentUserId = 113;
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-authorize($note['user_id'] === $currentUserId);
+        $note = $db->query("select * from notes where  id = :id;", 
+    ['id' => $_GET['id']])->findOrFail();
 
- 
-//dd($note);
+        authorize($note['user_id'] === $currentUserId);
 
-views("notes/show.view.php", [
-    'heading' => "Note",
-    'note' => $note
-]);
+        $db->query("delete from notes where id = :id", [
+            'id' => $_GET['id']
+        ]);
+
+
+        header('location: /demo/notes');
+        exit();
+
+    } else {
+        $note = $db->query("select * from notes where  id = :id;", 
+    ['id' => $_GET['id']])->findOrFail();
+        
+        authorize($note['user_id'] === $currentUserId);
+
+        views("notes/show.view.php", [
+            'heading' => "Note",
+            'note' => $note
+        ]); 
+
+    }
