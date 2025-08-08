@@ -9,6 +9,10 @@
             <p><?= htmlspecialchars($note['body']); ?></p>
         </li>
         <a href="/demo/notes" class="text-blue-500 hover:underline">Back to Notes</a>
+
+        <form method="POST" class="mt-6">
+            <button class="text-sm text-red-500">Delete</button>
+        </form>
     </div>
 </main>
 <?php views("partials/footer.php"); ?>
