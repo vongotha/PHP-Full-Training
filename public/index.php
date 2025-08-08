@@ -12,4 +12,4 @@ spl_autoload_register(function ($class) {
 });
 
 
-require base_path('router.php');
+require base_path('core/router.php');
