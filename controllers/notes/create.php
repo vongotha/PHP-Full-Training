@@ -7,7 +7,7 @@ $config = require base_path('config.php');
 
 $db = new Database($config['database'], 'root', '');
 
-// Email validation example
+// Email validation exampleg
 /*
 $email_test = "ffffah";
 if (!Validator::email($email_test)) {
@@ -17,8 +17,6 @@ if (!Validator::email($email_test)) {
 }
 
 */
-
-$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (! Validator::string($_POST['body'], 1, 500)) {
