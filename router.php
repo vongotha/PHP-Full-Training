@@ -4,7 +4,7 @@
     error_reporting(E_ALL);
 
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-        
+
     $routes = require 'routes.php';
 
     function routeToController($uri, $routes) {
@@ -16,7 +16,9 @@
     }
     function abort($code = 404) {
         http_response_code($code);
-        require "views/{$code}.view.php";
+        views("{$code}.view.php",
+            ['heading' => 'About Us'],
+        );
 
         die();
     }

@@ -3,7 +3,8 @@
 require base_path('core/validator.php');
 
 // connect to our MySQL database
-$config = base_path('config.php');
+$config = require base_path('config.php');
+
 $db = new Database($config['database'], 'root', '');
 
 // Email validation example
@@ -17,7 +18,6 @@ if (!Validator::email($email_test)) {
 
 */
 
-$heading = "Create Note";
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -36,6 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 views("notes/create.view.php", [
-    'heading' => $heading,
+    'heading' => "Create Note",
     'errors' => $errors
 ]);
