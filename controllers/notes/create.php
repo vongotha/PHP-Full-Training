@@ -1,5 +1,8 @@
 <?php
 
+use Core\Database;
+use Core\Validator;
+
 require base_path('core/validator.php');
 
 // connect to our MySQL database
@@ -17,7 +20,7 @@ if (!Validator::email($email_test)) {
 }
 
 */
-
+$errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (! Validator::string($_POST['body'], 1, 500)) {
             $errors['body'] = "A body of no more than 500 characters is required.";

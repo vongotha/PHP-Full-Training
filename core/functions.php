@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function urls ($url) {
     return $_SERVER['REQUEST_URI'] === $url;
 }
