@@ -42,9 +42,9 @@
             ];
         }
 
-        public function route($uri) {
+        public function route($uri, $method) {
             foreach ($this->routes as $route) {
-                if ($route['uri'] === $uri) {
+                if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
                     return require base_path($route['controller']);
                 }
             }
@@ -59,10 +59,4 @@
             die();
         }
     }
-/*
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-
-*/
      

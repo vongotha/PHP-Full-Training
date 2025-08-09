@@ -13,6 +13,3 @@
 
     $router->get('/', 'controller/index.php');
     $router->get('/note', 'controller/destrpy.php');
-
-    dd($router->routes);
-    
