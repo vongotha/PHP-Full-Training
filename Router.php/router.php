@@ -1,6 +1,46 @@
 <?php
 
+    class Router {
 
+        public $routes = [];
+        public function get($uri, $controller) {
+            $this->routes[] = [
+                'uri' => $uri,
+                'controller' => $controller,
+                'method' => 'GET'
+            ];
+        }
+        public function delete($uri, $controller) {
+            $this->routes[] = [
+                'uri' => $uri,
+                'controller' => $controller,
+                'method' => 'DELETE'
+            ];
+        }
+
+        public function post($uri, $controller) {
+            $this->routes[] = [
+                    'uri' => $uri,
+                    'controller' => $controller,
+                    'method' => 'POST'
+                ];
+            }
+        public function patch($uri, $controller) {
+            $this->routes[] = [
+                'uri' => $uri,
+                'controller' => $controller,
+                'method' => 'PATCH'
+            ];
+        }
+
+        public function put($uri, $controller) {
+            $this->routes[] = [
+                    'uri' => $uri,
+                    'controller' => $controller,
+                    'method' => 'PUT'
+                ];
+            }
+        }
 /*
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
