@@ -13,6 +13,13 @@ function dd($value) {
     die();
 }
 
+function abort($code = 404) {
+    http_response_code($code);
+    base_path(views("{$code}.view.php"));
+
+    die();
+}
+
 function authorize ($condition, $status = Response::FORBIDDEN) {
     if (! $condition) {
         abort($status);

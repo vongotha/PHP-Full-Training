@@ -1,15 +1,15 @@
 <?php
 
-/*
-    return [
-        '/' => 'controllers/index.php',
-        '/demo' => 'controllers/index.php',
-        '/demo/about' => 'controllers/about.php',
-        '/demo/notes' => 'controllers/notes/index.php',
-        '/demo/note' => 'controllers/notes/show.php',
-        '/demo/note/create' => 'controllers/notes/create.php',
-        '/demo/contact' => 'controllers/contact.php'
-    ]; */
+use Core\Router;
 
-    $router->get('/', 'controller/index.php');
-    $router->get('/note', 'controller/destrpy.php');
+
+
+$route->get('/', 'controller/index.php');
+$route->get('/demo/about', 'controllers/about.php');
+$route->get('/demo/contact', 'controllers/contact.php');
+/*
+
+    $route->get('/demo/notes', 'controllers/notes/index.php');
+    $route->get('/demo/note', 'controllers/notes/show.php');
+    $route->get('/demo/note/create', 'controllers/notes/create.php');
+ */
