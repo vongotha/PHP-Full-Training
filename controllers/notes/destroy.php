@@ -18,7 +18,7 @@ $note = $db->query("select * from notes where  id = :id;",
     authorize($note['user_id'] === $currentUserId);
 
     $db->query("delete from notes where id = :id", [
-        'id' => $DELETE['id']
+        'id' => $_POST['id']
     ]);
 
 

@@ -5,7 +5,7 @@
 <?php views("partials/banner.php", ['heading' => 'Create Note', 'errors' => $errors]); ?>
 <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <form method="POST">
+        <form method="POST" action="/demo/notes">
             <div class="shadow sm:overflow-hidden sm:rounded-md">
                 <div class="space-y-6 bg-gray-50 px-4 py-5 sm:p-6">
                     <div>
