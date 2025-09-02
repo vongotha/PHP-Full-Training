@@ -1,9 +1,7 @@
 <?php
 
 
-$errors = [];
-
-views("notes/create.view.php", [
-    'heading' => "Create Note",
+views("notes/edit.view.php", [
+    'heading' => "Edit Note",
     'errors' => []
 ]);
