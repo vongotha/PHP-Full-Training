@@ -21,6 +21,7 @@ class Database {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
     }
+
     public function query($query, $params = []) {
         
 

@@ -10,7 +10,6 @@ $db = new Database($config['database']);
 $db = App::resolve(Database::class);
 
 $notes = $db->query("select * from notes where user_id = 3;")->get();
-//dd($notes);
 
 
 views("notes/index.view.php", [
