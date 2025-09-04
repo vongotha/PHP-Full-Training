@@ -5,34 +5,40 @@
 
         public $routes = [];
         public function get($uri, $controller) {
-            $this->add($uri, 'GET' ,$controller);
+            return $this->add($uri, 'GET' ,$controller);
         }
 
         function add($uri, $method, $controller) {
             $this->routes[] = [
                 'uri' => $uri,
                 'controller' => $controller,
-                'method' => $method
+                'method' => $method,
+                'middleware' => []
             ];
+
+            return $this;
         }
         public function delete($uri, $controller) {
-            $this->add($uri,'DELETE',$controller);
+            return $this->add($uri,'DELETE',$controller);
         }
 
         public function post($uri, $controller) {
-            $this->add($uri,'POST',$controller);
+            return $this->add($uri,'POST',$controller);
             }
         public function patch($uri, $controller) {
-            $this->add($uri, 'PATCH', $controller);
+            return $this->add($uri, 'PATCH', $controller);
         }
 
         public function put($uri, $controller) {
-            $this->add($uri, 'PUT', $controller);
+            return $this->add($uri, 'PUT', $controller);
 
         }
 
         public function only($key) {
-            dd($key);
+            $this->routes[array_key_last($this->routes)]['middleware'] = $key;
+
+            dd($this->routes);
+            //return $this;
         }
 
         public function route($uri, $method) {
