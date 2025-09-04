@@ -2,8 +2,6 @@
 
 use Core\Router;
 
-
-
 $router->get('/demo', 'controllers/index.php');
 $router->get('/demo/about', 'controllers/about.php');
 $router->get('/demo/contact', 'controllers/contact.php');
@@ -14,10 +12,7 @@ $router->get('/demo/contact', 'controllers/contact.php');
     $router->delete('/demo/note', 'controllers/notes/destroy.php');
 
     $router->get('/demo/note/edit', 'controllers/notes/edit.php');
-<<<<<<< HEAD
     $router->patch('/demo/note', 'controllers/notes/update.php');
-=======
->>>>>>> 42bce77e4afda589a68914fffc0ccf11b4aed252
 
     $router->get('/demo/note/create', 'controllers/notes/create.php');
     $router->post('/demo/notes', 'controllers/notes/store.php');

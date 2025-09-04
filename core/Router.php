@@ -31,6 +31,10 @@
 
         }
 
+        public function only($key) {
+            dd($key);
+        }
+
         public function route($uri, $method) {
             foreach ($this->routes as $route) {
                 if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
