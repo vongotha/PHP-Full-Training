@@ -37,13 +37,26 @@
         public function only($key) {
             $this->routes[array_key_last($this->routes)]['middleware'] = $key;
 
-            dd($this->routes);
-            //return $this;
+            return $this;
         }
 
         public function route($uri, $method) {
             foreach ($this->routes as $route) {
                 if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+
+                    if ($route['middleware'] === 'guest' ) {
+                        if ($_SESSION['user'] ?? false) {
+                            header('location: /demo');
+                            exit();
+                        }
+                    }
+                    if ($route['middleware'] === 'auth' ) {
+                        if (!($_SESSION['user'] ?? false)) {
+                            header('location: /demo');
+                            exit();
+                        }
+                    }
+
                     return require base_path($route['controller']);
                 }
             }
