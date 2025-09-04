@@ -14,14 +14,23 @@
                     <div>
                         <label for="body" class="block text-sm/6 font-medium text-gray-900">Body of your Note</label>
                         <div class="mt-1">
+<<<<<<< HEAD
                             <textarea id="body" name="body" rows="3" placeholder="Here is an idea" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"><?= $note['body'] ?></textarea>
+=======
+                            <textarea id="body" name="body" rows="3" placeholder="Here is an idea" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"><?= $_POST['body'] ?? '' ?></textarea>
+>>>>>>> 42bce77e4afda589a68914fffc0ccf11b4aed252
                         </div>
                         <p class="text-red-500 text-xs mt-2"><?php echo $errors['body'] ?? ''; ?></p>
                     </div>
 
+<<<<<<< HEAD
                     <div class="bg-none px-4 py-3 text-right sm:px-6 flex justify-end gap-x-4">
                         <a href="/demo/notes" class="rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel</a>
                         <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
+=======
+                    <div class="bg-none px-4 py-3 text-right sm:px-6">
+                        <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+>>>>>>> 42bce77e4afda589a68914fffc0ccf11b4aed252
                     </div>
                 </div>
             </div>
