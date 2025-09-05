@@ -19,3 +19,6 @@ $router->get('/demo/contact', 'controllers/contact.php');
 
     $router->get('/demo/register', 'controllers/registration/create.php')->only('guest');
     $router->post('/demo/register', 'controllers/registration/store.php');
+
+    $router->get('/demo/login', 'controllers/session/create.php')->only('guest');
+    $router->post('/demo/session', 'controllers/session/store.php');

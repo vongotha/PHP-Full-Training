@@ -34,7 +34,8 @@
                     <?php if ($_SESSION['user'] ?? false) : ?>
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full" />
                     <?php else : ?>
-                        <a href="/demo/register" class="text-gray-300">Register</a>
+                        <a href="/demo/register" class="<?= urls ('/demo/register') ? 'bg-gray-900 text-white' : 'text-gray-300'?> rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white">Register</a>
+                        <a href="/demo/login" class="<?= urls ('/demo/login') ? 'bg-gray-900 text-white' : 'text-gray-300'?> rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white">Login</a>
                     <?php endif; ?>
                 </button>
 
