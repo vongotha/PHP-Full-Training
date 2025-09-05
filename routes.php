@@ -18,7 +18,9 @@ $router->get('/demo/contact', 'controllers/contact.php');
     $router->post('/demo/notes', 'controllers/notes/store.php');
 
     $router->get('/demo/register', 'controllers/registration/create.php')->only('guest');
-    $router->post('/demo/register', 'controllers/registration/store.php');
+    $router->post('/demo/register', 'controllers/registration/store.php')->only('guest');
 
     $router->get('/demo/login', 'controllers/session/create.php')->only('guest');
-    $router->post('/demo/session', 'controllers/session/store.php');
+    $router->post('/demo/session', 'controllers/session/store.php')->only('guest');
+    $router->delete('/demo/session', 'controllers/session/destroy.php')->only('auth');
+
