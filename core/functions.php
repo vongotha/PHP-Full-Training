@@ -41,4 +41,18 @@ function login ($user) {
     $_SESSION['user'] = [
         'email' => $user['email']
     ];
+/*
+    <a href="/demo/logout" class="<?= urls ('/demo/login') ? 'bg-gray-900 text-white' : 'text-gray-300'?> rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white">Logout</a>
+
+*/    
+
+}
+
+function logout () {
+    $_SESSION = [];
+
+    session_destroy();
+
+    session_get_cookie_params();
+    setcookie('PHPSESSID', '', time() - 3600, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
 }
