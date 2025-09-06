@@ -1,52 +1,49 @@
 <?php
 
 use Core\App;
-use Core\Validator;
 use Core\Database;
-use Http\Forms\LoginForm;
+use Core\Validator;
+use Core\Authenticator;
+var_dump("BEGIN");
+$db = App::resolve(Database::class);
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+$errors = [];
 
-$form = new LoginForm();
-
-if (! $form->validate($email, $password)) {
-    return views("session/create.view.php", [
-        'errors' => $form->errors()
-    ]);
-} else {
-    views("registration/create.view.php", [
-        'errors' => $form->errors()
-    ]);
-    exit();
+if (!Validator::email($email)) {
+    $errors['email'] = 'Please provide a valid email address.';
 }
 
+if (!Validator::string($password, 7, 255)) {
+    $errors['password'] = 'Please provide a password of at least seven characters.';
+}
 
-$db = App::resolve(Database::class);
+if (! empty($errors)) {
+    return views('registration/create.view.php', [
+        'errors' => $errors
+    ]);
+}
 
-$user = $db->query('select * from users where email = :email',
-    [
-        'email' => $email
-    ]
-)->find();
+$user = $db->query('select * from users where email = :email', [
+    'email' => $email
+    ])->find();
 
 if ($user) {
-    // cheschs if user already exists
-
-    // Redirect to the Login Page
-    header('location: /demo');
-
+    redirect('/demo');
 } else {
-    $db->query('insert into users (email, password) values (:email, :password)', [
+    $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
         'email' => $email,
         'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
+    $_SESSION['user'] = [
+        'email' => $email
+    ];
 
-    login($user);
+    $choose = new Authenticator();
+    $choose->login($user);
 
-    header('location: /demo');
-    exit();
-
-}
+    redirect('/demo');
+};
