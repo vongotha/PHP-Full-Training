@@ -46,7 +46,9 @@
                         <div class="ml-3">
                             <form method="POST" action="/demo/session">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button class="text-white">Log Out</button>
+                                <button class="text-white hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium">
+                                    Log Out
+                                </button>
                             </form>
                         </div>
                     <?php endif; ?>

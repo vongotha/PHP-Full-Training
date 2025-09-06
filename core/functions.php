@@ -41,8 +41,15 @@ function login ($user) {
     $_SESSION['user'] = [
         'email' => $user['email']
     ];
+<<<<<<< HEAD
 
     session_regenerate_id(true);
+=======
+/*
+    <a href="/demo/logout" class="<?= urls ('/demo/login') ? 'bg-gray-900 text-white' : 'text-gray-300'?> rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white">Logout</a>
+
+*/    
+>>>>>>> 921a9141e8909aae4e42227d627f2a53636979a8
 
 }
 
