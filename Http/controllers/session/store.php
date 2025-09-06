@@ -2,8 +2,9 @@
 
 
 use Core\App;
-use Core\Validator;
 use Core\Database;
+use Core\Validator;
+use Http\Forms\LoginForm;
 
 
 $db = App::resolve(Database::class);
@@ -11,7 +12,18 @@ $db = App::resolve(Database::class);
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$errors = [];
+
+
+$form = new LoginForm();
+
+if (! $form->validate($email, $password)) {
+    return views("session/create.view.php", [
+        'errors' => $form->errors()
+    ]);
+}
+
+
+/* $errors = [];
 
 if (!Validator::email($email)) {
     $errors['email'] = "Please enter a valid email address.";
@@ -28,6 +40,7 @@ if (!empty($errors)) {
     ]);
     exit();
 }
+*/
 
 $user = $db->query('select * from users where email = :email',
     [
@@ -52,5 +65,5 @@ if ($user) {
 return views("session/create.view.php", [
     'errors' => [
         'email' => 'No matching account found for that email address and password.'
-    ]
-]);
+        ]
+]); 

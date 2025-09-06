@@ -3,26 +3,25 @@
 use Core\App;
 use Core\Validator;
 use Core\Database;
+use Http\Forms\LoginForm;
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-if (!Validator::email($email)) {
-    $errors['email'] = "Please enter a valid email address.";
-}
 
+$form = new LoginForm();
 
-if (!Validator::string($password, 7, 255)) {
-    $errors['password'] = "Password must be between 7 and 255 characters.";
-}
-
-
-if (!empty($errors)) {
+if (! $form->validate($email, $password)) {
+    return views("session/create.view.php", [
+        'errors' => $form->errors()
+    ]);
+} else {
     views("registration/create.view.php", [
-        'errors' => $errors
+        'errors' => $form->errors()
     ]);
     exit();
 }
+
 
 $db = App::resolve(Database::class);
 
@@ -50,4 +49,4 @@ if ($user) {
     header('location: /demo');
     exit();
 
-} 
+}
