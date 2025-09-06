@@ -45,7 +45,7 @@ if ($user) {
     ]);
 
 
-    login($usser);
+    login($user);
 
     header('location: /demo');
     exit();
