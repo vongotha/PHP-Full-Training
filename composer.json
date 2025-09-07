@@ -1,0 +1,26 @@
+{
+    "name": "samue/demo",
+    "authors": [
+        {
+            "name": "Argon Dev",
+            "email": "vongotha0@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/collections": "^12.28"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core/",
+            "Http\\": "Http/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^4.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
