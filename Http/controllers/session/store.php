@@ -1,5 +1,6 @@
 <?php
 
+use Core\Session;
 use Core\Authenticator;
 use Http\Forms\LoginForm;
 
@@ -22,6 +23,8 @@ if ( $form->validate($email, $password)) {
         $form->error('email', 'No user found with that email and password combination.');
     }
 }
+
+Session::flash('errors', $form->errors());
 
 return views("session/create.view.php", [
     'errors' => $form->errors()
