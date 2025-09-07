@@ -37,6 +37,16 @@ function views($path, $attributes = []) {
     require base_path('views/' . $path);
 };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+function redirect ($path) {
+    header("Location: {$path}");
+    exit();
+};
+=======
+<<<<<<< HEAD
+>>>>>>> 4e4b4a27cc983be60564282e0b63c2643f9753ad
 function redirect ($path) {
     header("Location: {$path}");
     exit();
@@ -59,3 +69,7 @@ function logout () {
     $params = session_get_cookie_params();
     setcookie('PHPSESSID', '', time() - 3600, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
 }
+<<<<<<< HEAD
+=======
+>>>>>>> ec8778e6315ff47c7b7853ad77e225949ffdc87d
+>>>>>>> 4e4b4a27cc983be60564282e0b63c2643f9753ad
