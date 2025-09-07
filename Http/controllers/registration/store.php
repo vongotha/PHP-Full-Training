@@ -42,8 +42,8 @@ if ($user) {
         'email' => $email
     ];
 
-    $choose = new Authenticator();
-    $choose->login($user);
+    $auth = new Authenticator();
+    $auth->login($user);
 
     redirect('/demo');
 };

@@ -14,9 +14,9 @@ class LoginForm {
         }
 
 
-        if (!Validator::string($password, 7, 255)) {
-            $this->errors['password'] = "Password must be at least 7 characters long.";
-        }
+    if (!Validator::string($password, 7, 255)) {
+        $this->errors['password'] = "Password must be between 7 and 255 characters.";
+}
         return empty($this->errors);
     }
 
