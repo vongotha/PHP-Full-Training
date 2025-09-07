@@ -4,8 +4,6 @@ use Core\Session;
 use Core\Authenticator;
 use Http\Forms\LoginForm;
 
-var_dump("BEGIN");
-
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -22,6 +20,10 @@ if ($form->validate($email, $password)) {
 }
 
 Session::flash('errors', $form->errors());
+
+Session::flash('old', [
+    'email' => $_POST['email']
+]);
 
 return views("session/create.view.php", [
     'errors' => $form->errors()
