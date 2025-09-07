@@ -9,14 +9,11 @@ var_dump("BEGIN");
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-
 $form = new LoginForm();
 
-
-if ( $form->validate($email, $password)) {
-
+if ($form->validate($email, $password)) {
     $auth = new Authenticator();
-    
+
     if ($auth->attempt($email, $password)) {
         redirect('/demo');
     } else {
